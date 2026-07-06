@@ -60,7 +60,7 @@ export default function CircleHome() {
 
     const { data: circle, error: createError } = await supabase
       .from('circles')
-      .insert({ name: newCircleName.trim(), invite_code: generateInviteCode(), created_by: user.id })
+      .insert({ name: newCircleName.trim(), invite_code: generateInviteCode() })
       .select()
       .single()
 
@@ -72,7 +72,7 @@ export default function CircleHome() {
 
     const { error: memberError } = await supabase
       .from('circle_members')
-      .insert({ circle_id: circle.id, user_id: user.id })
+      .insert({ circle_id: circle.id, user_id: user.id, role: 'owner' })
 
     setCreating(false)
 
@@ -93,11 +93,10 @@ export default function CircleHome() {
 
     const code = joinCode.trim().toUpperCase()
 
-    const { data: circle, error: lookupError } = await supabase
-      .from('circles')
-      .select('id, name')
-      .eq('invite_code', code)
-      .maybeSingle()
+    const { data: rows, error: lookupError } = await supabase
+      .rpc('lookup_circle_by_invite_code', { invite: code })
+
+    const circle = rows?.[0] ?? null
 
     if (lookupError) {
       setError(lookupError.message)
@@ -113,7 +112,7 @@ export default function CircleHome() {
 
     const { error: memberError } = await supabase
       .from('circle_members')
-      .insert({ circle_id: circle.id, user_id: user.id })
+      .insert({ circle_id: circle.id, user_id: user.id, role: 'member' })
 
     setJoining(false)
 
