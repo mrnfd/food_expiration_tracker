@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import AuthPage from './pages/AuthPage'
 import CircleHome from './pages/CircleHome'
 import Dashboard from './pages/Dashboard'
+import AddItem from './pages/AddItem'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function Placeholder({ label }) {
@@ -39,7 +40,7 @@ function App() {
         path="/circles/:circleId/add"
         element={
           <ProtectedRoute>
-            <Placeholder label="Add Item (Screen 4)" />
+            <AddItem />
           </ProtectedRoute>
         }
       />
