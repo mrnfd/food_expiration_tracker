@@ -1,8 +1,19 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import AuthPage from './pages/AuthPage'
 import CircleHome from './pages/CircleHome'
 import Dashboard from './pages/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
+
+function Placeholder({ label }) {
+  const navigate = useNavigate()
+  const { circleId } = useParams()
+  return (
+    <div style={{ padding: 32 }}>
+      <button type="button" onClick={() => navigate(`/circles/${circleId}`)}>← Back</button>
+      <p style={{ color: '#6b6b6b', marginTop: 24 }}>{label} — coming soon.</p>
+    </div>
+  )
+}
 
 function App() {
   return (
@@ -21,6 +32,22 @@ function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/circles/:circleId/add"
+        element={
+          <ProtectedRoute>
+            <Placeholder label="Add Item (Screen 4)" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/circles/:circleId/items/:itemId"
+        element={
+          <ProtectedRoute>
+            <Placeholder label="Item Detail (Screen 5)" />
           </ProtectedRoute>
         }
       />
