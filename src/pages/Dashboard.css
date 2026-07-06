@@ -1,0 +1,147 @@
+.dash-screen {
+  min-height: 100svh;
+  background: #eeece4;
+  padding: 24px 24px 96px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.dash-inner {
+  width: 100%;
+  max-width: 480px;
+  padding-top: 32px;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.dash-back {
+  border: none;
+  background: none;
+  color: #3f7d63;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dash-user {
+  font-size: 13px;
+  color: #8a8a8a;
+  margin: 0;
+}
+
+.dash-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.dash-invite {
+  font-size: 13px;
+  color: #8a8a8a;
+  margin: 0 0 28px;
+}
+
+.dash-loading,
+.dash-empty {
+  color: #6b6b6b;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.dash-error {
+  color: #c0392b;
+  font-size: 14px;
+}
+
+/* Product list */
+
+.dash-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dash-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  gap: 0;
+}
+
+.dash-item-accent {
+  width: 5px;
+  align-self: stretch;
+  flex-shrink: 0;
+  border-radius: 14px 0 0 14px;
+}
+
+.dash-item--fresh  .dash-item-accent { background: #3f7d63; }
+.dash-item--soon   .dash-item-accent { background: #e08b2c; }
+.dash-item--expired .dash-item-accent { background: #c0392b; }
+
+.dash-item-body {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dash-item-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.dash-item-date {
+  font-size: 13px;
+}
+
+.dash-item-date--fresh   { color: #3f7d63; }
+.dash-item-date--soon    { color: #e08b2c; }
+.dash-item-date--expired { color: #c0392b; }
+
+.dash-item-arrow {
+  color: #a0a0a0;
+  padding-right: 16px;
+  font-size: 16px;
+}
+
+/* Floating add button */
+
+.dash-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #3f7d63;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(63, 125, 99, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
